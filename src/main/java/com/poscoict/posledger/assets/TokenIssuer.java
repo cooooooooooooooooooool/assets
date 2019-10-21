@@ -10,8 +10,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.poscoict.posledger.assets.model.User;
 import com.poscoict.posledger.assets.model.vo.AccessToken;
+import com.poscoict.posledger.assets.model.vo.UserVo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,12 +25,12 @@ public class TokenIssuer {
 	@Value("${secret}")
 	private String secret;
 	
-	public AccessToken generateAuthenticateToken(User user) throws JWTCreationException {
+	public AccessToken generateAuthenticateToken(UserVo user) throws JWTCreationException {
 		Date issueDate = new Date(System.currentTimeMillis());
 		Date expireDate = new Date(System.currentTimeMillis() + AccessToken.expireTime);
 		
 	    String token = JWT.create()
-                .withSubject(user.getId())
+                .withSubject(user.getUserId())
                 .withExpiresAt(expireDate)
                 .sign(Algorithm.HMAC256(secret));
 	    log.info("token : " + token);

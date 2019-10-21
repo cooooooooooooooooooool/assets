@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.poscoict.posledger.assets.TokenIssuer;
 import com.poscoict.posledger.assets.exception.UserNotFoundException;
-import com.poscoict.posledger.assets.model.User;
+import com.poscoict.posledger.assets.model.vo.UserVo;
 import com.poscoict.posledger.assets.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +47,7 @@ public class OauthController {
 	@PostMapping("/token")
 	public String token(@RequestParam(value="userId", required=true) String userId, HttpServletRequest request) throws Exception {
 		
-		User user = userService.getUser(userId);
+		UserVo user = userService.getUser(userId);
 		
 		if (user == null) throw new UserNotFoundException(userId);
 		

@@ -22,9 +22,10 @@ spring:
    datasource:
       type: org.apache.tomcat.jdbc.pool.DataSource
       driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:mysql://192.168.193.237:3306/hyperledger?autoReconnection=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
-      username: root
+      url: jdbc:log4jdbc:mysql://192.168.193.116:23306/jmrpadb?autoReconnection=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      username: test02
       password: test1234
+      platform: mysql
       tomcat:
          max-wait: 10000
          max-active: 50
@@ -54,6 +55,6 @@ server:
 logging:
    level:
       org:
-         springframework: debug
+         springframework: info
          hibernate: error
   

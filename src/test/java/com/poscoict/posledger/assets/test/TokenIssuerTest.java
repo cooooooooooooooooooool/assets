@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.poscoict.posledger.assets.TokenIssuer;
-import com.poscoict.posledger.assets.model.User;
 import com.poscoict.posledger.assets.model.vo.AccessToken;
+import com.poscoict.posledger.assets.model.vo.UserVo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,7 +25,7 @@ public class TokenIssuerTest {
 	@Test
 	public void generateTokenTest() throws Exception {
 		
-		User user = User.builder().id("mytest").password(DigestUtils.sha256Hex("1234")).build();
+		UserVo user = UserVo.builder().userId("mytest").password(DigestUtils.sha256Hex("1234")).build();
 		logger.info("origin user : " + user);
 		AccessToken accessToken = tokenResolver.generateAuthenticateToken(user);
 		logger.info("accessToken : " + accessToken);
